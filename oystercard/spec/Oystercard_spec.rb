@@ -17,9 +17,12 @@ it "should deposit money put in by the user" do
   expect(oystercard.balance).to eq 10
 end
 
-it "raises an error when balance exceeds £90" do
+it "does not allow balance to exceed £90" do
     oystercard = Oystercard.new
-    expect {oystercard.balance > 90}.to raise_error("Maximum Exceeded")
-    #{#maximum} needs to be put in "Maximum Exceeded"
+    MAXIMUM_BALANCE = 90 #maximum_balance = Oystercard::MAXIMUM_BALANCE
+    # subject.top_up maximum_balance
+    expect {oystercard.top_up(91) > MAXIMUM_BALANCE}.to raise_error("Maximum Value of #{MAXIMUM_BALANCE} is exceeded")
+    # expect{ subject.top_up 1 }.to raise_error "Maximum balance of #{maximum_balance} exceeded"
+
 end
 end
