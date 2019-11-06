@@ -27,5 +27,8 @@ def touch_in
   @in_journery = true
 end
 
+def touch_out
+  @in_journery = false
+end 
 
 end

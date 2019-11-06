@@ -34,7 +34,12 @@ end
 
 it "is in use when it is touched in" do
    oystercard = Oystercard.new
-   expect(oystercard.touch_in).to be true  
+   expect(oystercard.touch_in).to be true
+ end
+
+ it "is not in use when it is touched out" do
+   oystercard = Oystercard.new
+   expect(oystercard.touch_out).to be false
  end
 
 
