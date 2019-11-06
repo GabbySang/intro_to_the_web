@@ -1,5 +1,6 @@
 class Oystercard
 attr_reader :balance
+attr_reader :in_journery
 MAXIMUM_BALANCE = 90
 
 def initialize
@@ -21,4 +22,10 @@ def deduct(money)
     @balance -= money
   return @balance
 end
+
+def touch_in
+  @in_journery = true
+end
+
+
 end

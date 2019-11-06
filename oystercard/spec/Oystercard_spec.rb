@@ -30,8 +30,13 @@ it "does not allow balance to exceed £90" do
     # subject.top_up maximum_balance
     expect {oystercard.top_up(91) > MAXIMUM_BALANCE}.to raise_error("Maximum Value of #{MAXIMUM_BALANCE} is exceeded")
     # expect{ subject.top_up 1 }.to raise_error "Maximum balance of #{maximum_balance} exceeded"
-
-
-
 end
+
+it "is in use when it is touched in" do
+   oystercard = Oystercard.new
+   expect(oystercard.touch_in).to be true  
+ end
+
+
+
 end
