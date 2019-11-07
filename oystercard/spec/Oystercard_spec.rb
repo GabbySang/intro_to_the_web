@@ -32,16 +32,27 @@ it "does not allow balance to exceed £90" do
     # expect{ subject.top_up 1 }.to raise_error "Maximum balance of #{maximum_balance} exceeded"
 end
 
-it "is in use when it is touched in" do
+
+
+ it "it will not touch in when there is less than minimum balance" do
    oystercard = Oystercard.new
-   expect(oystercard.touch_in).to be true
- end
+   MINIMUM_BALANCE = 1
+   expect { oystercard.touch_in < MINIMUM_BALANCE }.to raise_error("Below Minimum Journey Funds")
+ in_journery = true
+# if (oystercard.touch_in > MINIMUM_BALANCE)
+#   expect(oystercard.touch_in).to be true
+   # expect(oystercard.touch_in).to be true
+end
+
 
  it "is not in use when it is touched out" do
    oystercard = Oystercard.new
-   expect(oystercard.touch_out).to be false
+   expect { oystercard.touch_out }.to change {oystercard.balance}.by(-MINIMUM_BALANCE)
+   in_journey = false
  end
-
-
-
 end
+# it "checks the minimum balance" do
+#   oystercard = Oystercard.new
+#   MINIMUM_BALANCE = 1
+#   expect { oystercard.touch_in < MINIMUM_BALANCE }.to raise_error
+#("Below Minimum Journey Funds")

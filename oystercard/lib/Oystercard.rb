@@ -2,6 +2,7 @@ class Oystercard
 attr_reader :balance
 attr_reader :in_journery
 MAXIMUM_BALANCE = 90
+MINIMUM_BALANCE = 1
 
 def initialize
 @balance = 0
@@ -24,11 +25,18 @@ def deduct(money)
 end
 
 def touch_in
-  @in_journery = true
-end
+ print @balance
+  # return @balance
+  fail "Below Minimum Journey Funds" if @balance < MINIMUM_BALANCE
+ @in_journery = true
+
+  # unless @balance > MINIMUM_BALANCE
+ # if @balance > MINIMUM_BALANCE then @in_journery = true
+ end
 
 def touch_out
+  @balance -= MINIMUM_BALANCE
+  return @balance
   @in_journery = false
-end 
-
+end
 end
