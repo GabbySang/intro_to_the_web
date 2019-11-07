@@ -19,10 +19,11 @@ def top_up(money)
   return @balance
 end
 
-def deduct(money)
-    @balance -= money
-  return @balance
-end
+# private
+# def deduct(money)
+#     @balance -= money
+#   return @balance
+# end
 
 def touch_in
  print @balance
@@ -35,8 +36,15 @@ def touch_in
  end
 
 def touch_out
-  @balance -= MINIMUM_BALANCE
+  deduct (MINIMUM_BALANCE)
   return @balance
   @in_journery = false
 end
+
+private
+def deduct(money)
+    @balance -= money
+  return @balance
+end
+
 end

@@ -17,12 +17,12 @@ it "should deposit money put in by the user" do
   expect(oystercard.balance).to eq 10
 end
 
-it "deducts money when you use it" do
-  oystercard = Oystercard.new
-  oystercard.top_up(10)
-  oystercard.deduct(6)
-  expect(oystercard.balance).to eq 4
-end
+# it "deducts money when you use it" do
+#   oystercard = Oystercard.new
+#   oystercard.top_up(10)
+#   oystercard.deduct(6)
+#   expect(oystercard.balance).to eq 4
+# end
 
 it "does not allow balance to exceed £90" do
     oystercard = Oystercard.new
